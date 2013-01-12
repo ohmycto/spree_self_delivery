@@ -1,0 +1,31 @@
+<table data-hook="self_delivery_point">
+  <tr data-hook="country">
+    <td><%= f.label :country %> <span class="required">*</span></td>
+    <td><%= f.collection_select :country_id, @countries, :id, :name %></td>
+  </tr>
+
+  <tr data-hook="state">
+    <td><%= f.label :state %> <span class="required">*</span></td>
+    <td>
+      <%= f.hidden_field :state_id, :value => '', :id => '' %>
+      <%= f.collection_select :state_id, f.object.country ? f.object.country.states.order(:name) : [], :id, :name %>
+    </td>
+  </tr>
+  <tr data-hook="city">
+    <td><%= f.label :city %> <span class="required">*</span></td>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  <tr data-hook="address">
+    <td><%= f.label :address1 %> <span class="required">*</span></td>
+    <td><%= f.text_field :address1 %></td>
+  </tr>
+  <tr data-hook="hours">
+    <td><%= f.label :hours %></td>
+    <td><%= f.text_field :hours %></td>
+  </tr>
+  <tr data-hook="description">
+    <td><%= f.label :description %></td>
+    <td><%= f.text_area :description %></td>
+  </tr>
+  
+</table>

@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      self_delivery_point: Self delivery point
+    attributes:
+      self_delivery_point: 
+        country: Country
+        state: State
+        city: City
+        address1: Address
+        hours: Hours
+        description: Description
+        
+  self_delivery_points: Self delivery points
+  new_self_delivery_point: New self delivery point
+  editing_self_delivery_point: Editing self delivery point

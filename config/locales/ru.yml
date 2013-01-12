@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      self_delivery_point: Пункт самовывоза
+    attributes:
+      self_delivery_point: 
+        country: Страна
+        state: Регион
+        city: Город
+        address1: Адрес
+        hours: Часы работы
+        description: Описание
+        
+  self_delivery_points: Пункты самовывоза
+  new_self_delivery_point: Новый пункт самовывоза
+  editing_self_delivery_point: Редактировать пункт самовывоза

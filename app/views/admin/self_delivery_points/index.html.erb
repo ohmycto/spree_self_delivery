@@ -1,0 +1,31 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<div class="toolbar" data-hook="toolbar">
+  <ul class="actions">
+    <li>
+      <%= button_link_to t(:new_self_delivery_point), new_object_url, :icon => 'add' %>
+    </li>
+  </ul>
+  <br class="clear" />
+</div>
+
+<h1><%= t :self_delivery_points %></h1>
+
+<table class="index" id='listing_self_delivery_points'>
+  <tr data-hook="admin_self_delivery_points_index_headers">
+    <th>&nbsp;</th>
+    <th></th>
+  </tr>
+  <tbody>
+    <% @self_delivery_points.each do |point|%>
+      <tr id="<%= dom_id point %>" data-hook="admin_self_delivery_points_index_rows">
+        <td><%= point.full_address %></td>
+        <td width="140px" data-hook="admin_self_delivery_points_index_row_actions">
+          <%= link_to_edit point, :class => 'edit' %>
+          &nbsp;
+          <%= link_to_delete point %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
