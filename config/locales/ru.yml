@@ -10,7 +10,8 @@ ru:
         address1: Адрес
         hours: Часы работы
         description: Описание
-        
+  self_delivery: Самовывоз      
   self_delivery_points: Пункты самовывоза
   new_self_delivery_point: Новый пункт самовывоза
   editing_self_delivery_point: Редактировать пункт самовывоза
+  self_delivery_shipping_method_exists: "Допустим только один способ доставки \"Самовывоз\""

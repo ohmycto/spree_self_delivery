@@ -20,5 +20,9 @@ module SpreeSelfDelivery
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer "spree.register.calculators" do |app|
+      app.config.spree.calculators.shipping_methods << Calculator::SelfDelivery
+    end
   end
 end
