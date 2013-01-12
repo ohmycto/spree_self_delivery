@@ -1,0 +1,55 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    if($('#is_self_delivery').length > 0){
+      var self_delivery_attributes = '#order_ship_address_attributes_lastname, #order_ship_address_attributes_firstname, #order_ship_address_attributes_secondname, #order_ship_address_attributes_phone';
+      var has_address_book = $('input[name="order[ship_address_id]"]').length > 0;
+      $('#is_self_delivery').change(function(){
+        if($(this).attr('checked')){
+          $(self_delivery_attributes).removeAttr('disabled');
+          hide_field($('#shipping input, #shipping select').not(self_delivery_attributes));
+          $('#shipping .inner').show();
+          $('#self_delivery_point').show().find('select').removeAttr('disabled');
+        }else{
+          if(!has_address_book || ($('input[name="order[ship_address_id]"]:checked').val() == '0')){
+            show_field($('#shipping input, #shipping select')); 
+          }
+          else if(has_address_book){
+            show_field($('#shipping .select_address input'));
+            //$('#shipping .select_address').find('input').removeAttr('disabled').closest('.field').show();
+            $('#shipping .inner').hide().find('input, select').attr('disabled', 'disabled').show().closest('.field').show();
+          }
+          $('#self_delivery_point').hide().find('select').attr('disabled', 'disabled');
+        }
+      });
+      $('#is_self_delivery').change();
+
+      $('#order_self_delivery_point_id').change(function(){
+        $('#self_delivery_point .info').hide();
+        $('#self_delivery_point_' + $(this).val()).show();
+      });
+
+      if($('#order_use_billing').length > 0){
+        $('#order_use_billing').change(function(){
+          if($(this).attr('checked')){
+            $('#self_delivery').hide().find('input[type=checkbox]').attr('disabled', 'disabled');
+          }else{
+            $('#self_delivery').show().find('input').removeAttr('disabled');
+          }
+        });
+      }
+    }
+    function hide_field(el){
+      // element can have no ".field" parent 
+      el.attr('disabled', 'disabled').hide().closest('.field').hide();
+      if(el.attr('id') == 'order_ship_address_attributes_state_id' || el.attr('id') == 'order_ship_address_attributes_state_name'){
+        $('#sstate').hide();
+      }
+    }
+    function show_field(el){
+      el.removeAttr('disabled').show().closest('.field').show();
+      if(el.attr('id') == 'order_ship_address_attributes_state_id' || el.attr('id') == 'order_ship_address_attributes_state_name'){
+        $('#sstate').show();
+      }
+    }
+  });
+</script>

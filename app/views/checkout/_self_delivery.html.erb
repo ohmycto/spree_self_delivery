@@ -1,0 +1,33 @@
+<% if ShippingMethod.self_delivery && @self_delivery_points.length > 0 %>
+  <fieldset id="self_delivery">
+    <p class="field">
+      <%= check_box_tag :is_self_delivery, '', !form.object.self_delivery_point.present? %>
+      <%= label_tag :is_self_delivery, t(:self_delivery) %>
+    </p>
+    <div id="self_delivery_point" style="display:<%= form.object.self_delivery_point.present? ? 'block' : 'none' %>">
+      <p class="field">
+        <%= form.hidden_field :self_delivery_point_id, :value => '', :id => nil %>
+        <%= form.collection_select :self_delivery_point_id, @self_delivery_points, :id, :full_address, {}, {:disabled => !form.object.self_delivery_point.present? } %>
+      </p>
+      <p>&nbsp;</p>
+
+      <% initial = form.object.self_delivery_point.try(:id) || @self_delivery_points.first.id %>
+      <% @self_delivery_points.each do |point| %>
+        <div class="info" id="self_delivery_point_<%= point.id %>" style="display:<%= initial == point.id ? 'block' : 'none' %>">
+          <% if point.hours.present? %>
+            <p class="hours">
+              <span class="label"><%= SelfDeliveryPoint.human_attribute_name(:hours) %>:</span>
+              <%= point.hours %>
+            </p>
+          <% end %>
+          <% if point.description.present? %>
+            <p class="description">
+              <%= point.description.html_safe %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </fieldset>
+<% end %>
+<hr class="space" />

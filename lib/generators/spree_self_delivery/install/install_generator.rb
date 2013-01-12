@@ -6,6 +6,10 @@ module SpreeSelfDelivery
         append_file "app/assets/javascripts/admin/all.js", "//= require admin/spree_self_delivery\n"
       end
 
+      def add_stylesheets
+        inject_into_file "app/assets/stylesheets/store/all.css", " *= require store/spree_self_delivery\n", :before => /\*\//, :verbose => true
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_self_delivery'
       end

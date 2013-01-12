@@ -1,0 +1,9 @@
+#order_self_delivery_point_id{
+  max-width: 500px;
+}
+#self_delivery_point .info p{
+  margin: 0.5em 0 0 0;
+}
+#self_delivery_point .info .label{
+  font-weight: bold;
+}
