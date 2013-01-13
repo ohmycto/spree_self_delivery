@@ -35,7 +35,7 @@ Order.class_eval do
       write_attribute(:self_delivery_point_id, @self_delivery_point_id)
       return if @self_delivery_point_id.to_i < 1 || !ship_address
       if sdp = SelfDeliveryPoint.find_by_id(@self_delivery_point_id)
-        [:country, :state, :city, :address1].each do |a|
+        [:country, :state, :state_name, :city, :address1].each do |a|
           ship_address.send("#{a}=", sdp.send(a))
         end
         ship_address.zipcode = '-'

@@ -8,7 +8,9 @@
     <td><%= f.label :state %> <span class="required">*</span></td>
     <td>
       <%= f.hidden_field :state_id, :value => '', :id => '' %>
-      <%= f.collection_select :state_id, f.object.country ? f.object.country.states.order(:name) : [], :id, :name %>
+      <%= f.collection_select :state_id, f.object.country ? f.object.country.states.order(:name) : [], :id, :name, {:include_blank => true}, {:disabled => f.object.country.blank? || !f.object.country.states.exists?} %>
+      <%= t :or %>
+      <%= f.text_field :state_name, :disabled => f.object.country && f.object.country.states.exists? %>
     </td>
   </tr>
   <tr data-hook="city">
