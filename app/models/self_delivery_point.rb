@@ -7,7 +7,11 @@ class SelfDeliveryPoint < ActiveRecord::Base
   validate :state_or_state_name
 
   def full_address
-    [country.try(:name), state.try(:name), city, address1].join(', ')
+    addr = []
+    addr << country.try(:name) if show_country
+    addr << (state.try(:name).presence || state_name) if show_state
+    addr << address1
+    addr.compact.join(', ')
   end
 
   private

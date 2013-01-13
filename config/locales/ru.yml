@@ -11,6 +11,8 @@ ru:
         hours: Часы работы
         description: Описание
         cost: Стоимость
+        show_country: Отображать страну
+        show_state: Отображать регион
   self_delivery: Самовывоз      
   self_delivery_points: Пункты самовывоза
   new_self_delivery_point: Новый пункт самовывоза

@@ -11,6 +11,8 @@ en:
         hours: Hours
         description: Description
         cost: Cost
+        show_country: Show country
+        show_state: Show state
   self_delivery: Self delivery      
   self_delivery_points: Self delivery points
   new_self_delivery_point: New self delivery point
