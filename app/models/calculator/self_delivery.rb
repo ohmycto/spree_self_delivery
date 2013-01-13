@@ -5,6 +5,7 @@ class Calculator::SelfDelivery < Calculator
   end
 
   def compute(object)
-    # todo
+    object = object.order unless object.kind_of?(Order)
+    object.self_delivery_point.cost || 0
   end
 end

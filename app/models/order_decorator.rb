@@ -17,6 +17,8 @@ Order.class_eval do
   state_machine.after_transition :to => 'delivery' do |order|
     if order.self_delivery?
       order.state = order.payment_required? ? 'payment' : 'complete'
+      order.save
+      order.state == 'payment' ? order.create_shipment! : order.finalize! 
     end
   end
 

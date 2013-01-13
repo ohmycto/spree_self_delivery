@@ -10,6 +10,7 @@ en:
         address1: Address
         hours: Hours
         description: Description
+        cost: Cost
   self_delivery: Self delivery      
   self_delivery_points: Self delivery points
   new_self_delivery_point: New self delivery point
