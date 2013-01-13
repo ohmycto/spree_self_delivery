@@ -1,7 +1,7 @@
 <% if ShippingMethod.self_delivery && @self_delivery_points.length > 0 %>
   <fieldset id="self_delivery">
     <p class="field">
-      <%= check_box_tag :is_self_delivery, '', !form.object.self_delivery_point.present? %>
+      <%= check_box_tag :is_self_delivery, '', form.object.self_delivery_point.present? %>
       <%= label_tag :is_self_delivery, t(:self_delivery) %>
     </p>
     <div id="self_delivery_point" style="display:<%= form.object.self_delivery_point.present? ? 'block' : 'none' %>">

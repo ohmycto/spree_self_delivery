@@ -6,6 +6,10 @@ ShippingMethod.class_eval do
     joins(:calculator).where('calculators.type' => 'Calculator::SelfDelivery').first
   end
 
+  def self_delivery?
+    calculator[:type] == 'Calculator::SelfDelivery'
+  end
+  
   private
 
   def self_delivery_uniqueness
