@@ -18,3 +18,4 @@ en:
   new_self_delivery_point: New self delivery point
   editing_self_delivery_point: Editing self delivery point
   self_delivery_shipping_method_exists: Self delivery shipping method already exists
+  self_delivery_points_settings_description: Manage self delivery points
