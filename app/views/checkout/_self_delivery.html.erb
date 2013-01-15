@@ -14,6 +14,10 @@
       <% initial = form.object.self_delivery_point.try(:id) || @self_delivery_points.first.id %>
       <% @self_delivery_points.each do |point| %>
         <div class="info" id="self_delivery_point_<%= point.id %>" style="display:<%= initial == point.id ? 'block' : 'none' %>">
+          <p class="cost">
+            <span class="label"><%= SelfDeliveryPoint.human_attribute_name(:cost) %>:</span>
+            <%= point.cost.blank? || point.cost == 0 ? t(:self_delivery_point_free) : point.cost %>
+          </p>
           <% if point.hours.present? %>
             <p class="hours">
               <span class="label"><%= SelfDeliveryPoint.human_attribute_name(:hours) %>:</span>

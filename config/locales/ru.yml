@@ -19,3 +19,4 @@ ru:
   editing_self_delivery_point: Редактировать пункт самовывоза
   self_delivery_shipping_method_exists: "Допустим только один способ доставки \"Самовывоз\""
   self_delivery_points_settings_description: Управление пунктами самовывоза
+  self_delivery_point_free: бесплатно
