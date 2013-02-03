@@ -11,7 +11,7 @@
 
 <h1><%= t :self_delivery_points %></h1>
 
-<table class="index" id='listing_self_delivery_points'>
+<table class="index sortable" id='listing_self_delivery_points'>
   <tr data-hook="admin_self_delivery_points_index_headers">
     <th>&nbsp;</th>
     <th></th>
@@ -19,7 +19,10 @@
   <tbody>
     <% @self_delivery_points.each do |point|%>
       <tr id="<%= dom_id point %>" data-hook="admin_self_delivery_points_index_rows">
-        <td><%= point.full_address %></td>
+        <td>
+          <span class="handle"></span>
+          <%= point.full_address %>
+        </td>
         <td width="140px" data-hook="admin_self_delivery_points_index_row_actions">
           <%= link_to_edit point, :class => 'edit' %>
           &nbsp;

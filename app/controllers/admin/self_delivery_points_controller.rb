@@ -1,6 +1,15 @@
 class Admin::SelfDeliveryPointsController < Admin::ResourceController
   before_filter :load_data, :only => [:new, :create, :edit, :update]
 
+  def update_positions
+    params[:positions].each do |id, index|
+      SelfDeliveryPoint.where(:id => id).update_all(:position => index)
+    end
+    respond_to do |format|
+      format.js  { render :text => 'Ok' }
+    end
+  end
+  
   private
 
   def load_data

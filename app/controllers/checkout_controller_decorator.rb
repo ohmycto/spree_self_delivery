@@ -4,8 +4,7 @@ CheckoutController.class_eval do
   private
 
   def load_self_delivery_points
-    # TODO some kind of ordering?
-    @self_delivery_points = SelfDeliveryPoint.all
+    @self_delivery_points = SelfDeliveryPoint.ordered
   end
 
   # prevent spree_address_book gem to store user_id in address
