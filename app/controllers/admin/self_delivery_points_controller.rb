@@ -1,6 +1,10 @@
 class Admin::SelfDeliveryPointsController < Admin::ResourceController
   before_filter :load_data, :only => [:new, :create, :edit, :update]
 
+  def index
+    @self_delivery_points = SelfDeliveryPoint.ordered
+  end
+
   def update_positions
     params[:positions].each do |id, index|
       SelfDeliveryPoint.where(:id => id).update_all(:position => index)
