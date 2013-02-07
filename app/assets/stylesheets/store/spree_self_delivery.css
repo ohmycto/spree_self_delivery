@@ -1,5 +1,9 @@
+fieldset#self_delivery{
+  margin: 20px 10px 20px 0; 
+  border-color: #DEDEDE;
+}
 #order_self_delivery_point_id{
-  max-width: 500px;
+  max-width: 100%;
 }
 #self_delivery_point .info p{
   margin: 0.5em 0 0 0;

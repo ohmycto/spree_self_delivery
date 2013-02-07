@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="five columns">
+    <%= f.field_container :country do %>
+      <%= f.label :country %> <span class="required">*</span><br />
+      <%= f.collection_select :country_id, @countries, :id, :name %>
+      <%= error_message_on :self_delivery_point, :country_id %>
+    <% end %>
+  </div>
+
+  <div class="four columns">
+    <%= f.field_container :show_country do %>
+      <%= f.label :show_country %> <br />
+      <%= f.check_box :show_country %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="five columns">
+    <%= f.field_container :state do %>
+      <%= f.label :state %> <span class="required">*</span><br />
+      <%= f.hidden_field :state_id, :value => '', :id => '' %>
+      <%= f.collection_select :state_id, f.object.country ? f.object.country.states.order(:name) : [], :id, :name, {:include_blank => true}, {:disabled => f.object.country.blank? || !f.object.country.states.exists?} %>
+      <%= t :or %><br /><br />
+      <%= f.text_field :state_name, :disabled => f.object.country && f.object.country.states.exists?, :class => 'fullwidth' %>
+      <%= error_message_on :self_delivery_point, :state_id %>
+    <% end %>
+  </div>
+
+  <div class="four columns">
+    <%= f.field_container :show_state do %>
+      <%= f.label :show_state %> <br />
+      <%= f.check_box :show_state %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="seven columns">
+    <%= f.field_container :city do %>
+      <%= f.label :city %> <span class="required">*</span><br />
+      <%= f.text_field :city, :class => 'fullwidth' %>
+      <%= error_message_on :self_delivery_point, :city %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="seven columns">
+    <%= f.field_container :address1 do %>
+      <%= f.label :address1 %> <span class="required">*</span><br />
+      <%= f.text_field :address1, :class => 'fullwidth' %>
+      <%= error_message_on :self_delivery_point, :address1 %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="seven columns">
+    <%= f.field_container :hours do %>
+      <%= f.label :hours %><br />
+      <%= f.text_field :hours, :class => 'fullwidth' %>
+      <%= error_message_on :self_delivery_point, :hours %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="seven columns">
+    <%= f.field_container :description do %>
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :class => 'fullwidth', :rows => 4 %>
+      <%= error_message_on :self_delivery_point, :description %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="seven columns">
+    <%= f.field_container :cost do %>
+      <%= f.label :cost %><br />
+      <%= f.text_field :cost, :class => 'fullwidth' %>
+      <%= error_message_on :self_delivery_point, :cost %>
+    <% end %>
+  </div>
+</div>

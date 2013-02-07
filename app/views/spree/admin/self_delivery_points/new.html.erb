@@ -1,0 +1,23 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= t(:new_self_delivery_point) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t(:back_to_shipping_methods_list), admin_self_delivery_points_path, :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<%= render 'spree/shared/error_messages', :target => @self_delivery_point %>
+
+<%= form_for [:admin, @self_delivery_point] do |f| %>
+  <%= render 'form', :f => f %>
+  <fieldset class="no-border-top">
+    <div class="clear"></div>
+    <div>
+      <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+    </div>  
+  </fieldset>
+<% end %>
