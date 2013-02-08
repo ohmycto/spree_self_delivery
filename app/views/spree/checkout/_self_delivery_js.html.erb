@@ -4,7 +4,7 @@
       var self_delivery_attributes = '#order_ship_address_attributes_lastname, #order_ship_address_attributes_firstname, #order_ship_address_attributes_secondname, #order_ship_address_attributes_phone';
       var has_address_book = $('input[name="order[ship_address_id]"]').length > 0;
       $('#is_self_delivery').change(function(){
-        if($(this).attr('checked')){
+        if($(this).prop('checked')){
           $(self_delivery_attributes).removeAttr('disabled');
           hide_field($('#shipping input, #shipping select').not(self_delivery_attributes));
           $('#shipping .inner').show();
@@ -15,9 +15,9 @@
           }
           else if(has_address_book){
             show_field($('#shipping .select_address input'));
-            $('#shipping .inner').hide().find('input, select').not('.hidden').attr('disabled', 'disabled').show().closest('.field').show();
+            $('#shipping .inner').hide().find('input, select').not('.hidden').prop('disabled', 'disabled').show().closest('.field').show();
           }
-          $('#self_delivery_point').hide().find('select').attr('disabled', 'disabled');
+          $('#self_delivery_point').hide().find('select').prop('disabled', 'disabled');
         }
       });
       $('#is_self_delivery').change();
@@ -29,8 +29,8 @@
 
       if($('#order_use_billing').length > 0){
         $('#order_use_billing').change(function(){
-          if($(this).attr('checked')){
-            $('#self_delivery').hide().find('input[type=checkbox]').attr('disabled', 'disabled');
+          if($(this).prop('checked')){
+            $('#self_delivery').hide().find('input[type=checkbox]').prop('disabled', 'disabled');
           }else{
             $('#self_delivery').show().find('input').removeAttr('disabled');
           }
@@ -39,13 +39,13 @@
     }
     function hide_field(sel){
       sel.each(function(){
-        $(this).attr('disabled', 'disabled');
+        $(this).prop('disabled', 'disabled');
         if($(this).closest('.field').length > 0){
           $(this).closest('.field').hide();
         }else{
           $(this).hide();
         }
-        if($(this).attr('id') == 'order_ship_address_attributes_state_id' || $(this).attr('id') == 'order_ship_address_attributes_state_name'){
+        if($(this).prop('id') == 'order_ship_address_attributes_state_id' || $(this).prop('id') == 'order_ship_address_attributes_state_name'){
           $('#sstate').hide();
         }
       });
@@ -58,7 +58,7 @@
         }else{
           $(this).show();
         }
-        if($(this).attr('id') == 'order_ship_address_attributes_state_id' || $(this).attr('id') == 'order_ship_address_attributes_state_name'){
+        if($(this).prop('id') == 'order_ship_address_attributes_state_id' || $(this).prop('id') == 'order_ship_address_attributes_state_name'){
           $('#sstate').show();
         }
       });
