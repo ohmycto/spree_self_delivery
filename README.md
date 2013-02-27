@@ -13,3 +13,7 @@ Installation
 
     Create ShippingMethod with `self delivery` calculator and display_on = back_end
     Go to `/admin/self_delivery_points` and create one or more self delivery points
+
+##### Note
+
+If you are using spree_address_book gem it should be specified before spree_self_delivery in Gemfile
