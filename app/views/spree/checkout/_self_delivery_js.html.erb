@@ -15,7 +15,7 @@
           }
           else if(has_address_book){
             show_field($('#shipping .select_address input'));
-            $('#shipping .inner').hide().find('input, select').not('.hidden').prop('disabled', 'disabled').show().closest('.field').show();
+            $('#shipping .inner').hide().find('input, select').prop('disabled', 'disabled').closest('.field').show();
           }
           $('#self_delivery_point').hide().find('select').prop('disabled', 'disabled');
         }
@@ -40,26 +40,14 @@
     function hide_field(sel){
       sel.each(function(){
         $(this).prop('disabled', 'disabled');
-        if($(this).closest('.field').length > 0){
-          $(this).closest('.field').hide();
-        }else{
-          $(this).hide();
-        }
-        if($(this).prop('id') == 'order_ship_address_attributes_state_id' || $(this).prop('id') == 'order_ship_address_attributes_state_name'){
-          $('#sstate').hide();
-        }
+        $(this).closest('.field').hide();
       });
     }
     function show_field(sel){
-      sel.not('.hidden').each(function(){
-        $(this).removeAttr('disabled');
-        if($(this).closest('.field').length > 0){
-          $(this).closest('.field').show();
-        }else{
-          $(this).show();
-        }
-        if($(this).prop('id') == 'order_ship_address_attributes_state_id' || $(this).prop('id') == 'order_ship_address_attributes_state_name'){
-          $('#sstate').show();
+      sel.each(function(){
+        $(this).closest('.field').show();
+        if($(this).is(':visible')){
+          $(this).removeAttr('disabled');
         }
       });
     }
