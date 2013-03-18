@@ -6,6 +6,6 @@ class Calculator::SelfDelivery < Calculator
 
   def compute(object)
     object = object.order unless object.kind_of?(Order)
-    object.self_delivery_point.cost || 0
+    object.self_delivery_point.try(:cost) || 0
   end
 end
