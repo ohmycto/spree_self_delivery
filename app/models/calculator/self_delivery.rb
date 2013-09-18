@@ -5,6 +5,7 @@ class Calculator::SelfDelivery < Calculator
   end
 
   def compute(object)
+    return nil if object.blank?
     object = object.order unless object.kind_of?(Order)
     object.self_delivery_point.try(:cost) || 0
   end
